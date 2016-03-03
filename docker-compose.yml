@@ -1,0 +1,32 @@
+lep-as:
+  image: ctliv/liferay:6.2
+  container_name: lep-as
+  dns:
+  - 8.8.8.8
+  - 8.8.4.4
+  environment:
+  - LIFERAY_DEBUG=1
+  - VM_HOST=vm-default
+  ports:
+  - "2222:22"
+  - "1099:1099"
+  - "80:8080"
+  - "443:8443"
+  - "8999:8999"
+  volumes:
+  - ./deploy-run:/var/liferay/deploy
+  links:
+  - "lep-db"
+lep-db:
+  image: mysql:5.7
+  container_name: lep-db
+  dns:
+  - 8.8.8.8
+  - 8.8.4.4
+  ports:
+  - "3306:3306"
+  environment:
+  - MYSQL_ROOT_PASSWORD=adminpwd
+  - MYSQL_USER=lportal
+  - MYSQL_PASSWORD=lportal
+  - MYSQL_DATABASE=lportal
