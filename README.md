@@ -3,7 +3,7 @@ Liferay 6.2 GA6 on Tomcat with mysql DB (two containers)
 
 Based on ctliv/liferay:6.2
 
-Image available in docker registry: https://hub.docker.com/r/bfreire/liferay/
+Image available in docker registry: https://hub.docker.com/r/bfreire/liferay-6.2-ce/
 
 ## Pulling:
 
