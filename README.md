@@ -1,31 +1,31 @@
-Liferay 6.2 GA6 on Tomcat with mysql DB (two containers)
+Liferay CE 7.0 GA2 on Tomcat with mysql DB (two containers)
 ==========================================================
 
 Based on ctliv/liferay:6.2
 
-Image available in docker registry: https://hub.docker.com/r/bfreire/liferay-6.2-ce/
+Image available in docker registry: https://hub.docker.com/r/bfreire/liferay/
 
 ## Pulling:
 
 ```
-docker pull bfreire/liferay-6.2-ce
+docker pull bfreire/liferay
 ```
 
 ## Launching using "docker run":
 
 ```
 # Run mysql:
-docker run --name lep-db -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_USER=lportal -e MYSQL_PASSWORD=lportal -e MYSQL_DATABASE=lportal -d mysql:5.7
+docker run --name lep-db -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_USER=lportal -e MYSQL_PASSWORD=lportal -e MYSQL_DATABASE=lportal -d mysql
 # To enable remote connection add option:
 #     -p 3306:3306
 
 # Run liferay:
-docker run --name lep-as -p 80:8080 -p 443:8443 --link lep-db -d bfreire/liferay-6.2-ce
+docker run --name lep-as -p 80:8080 -p 443:8443 --link lep-db -d bfreire/liferay
 # To enable development mode add options (includes SSH daemon + JMX monitoring + dt_socket debugging) add options:
 #     -e LIFERAY_DEBUG=1 -p 2222:22 -p 1099:1099 -p 8999:8999
-# If docker daemon does not run on localhost (e.g.: VirtualBox), JMX monitoring needs option: 
+# If docker daemon does not run on localhost (e.g.: VirtualBox), JMX monitoring needs option:
 #     -e VM_HOST=<docker daemon hostname>
-# To mount liferay deploy directory locally add: 
+# To mount liferay deploy directory locally add:
 #     -v /absolute/path/to/local/folder:/var/liferay/deploy
 ```
 
