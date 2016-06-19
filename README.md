@@ -5,7 +5,7 @@ Based on ctliv/liferay:6.2
 
 Image available in docker registry: https://hub.docker.com/r/bfreire/liferay/
 
-## Launching using "docker run":
+## Launch it using "docker run":
 
 ```
 # Run mysql:
