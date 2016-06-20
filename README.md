@@ -5,7 +5,8 @@ Based on ctliv/liferay:6.2
 
 Image available in docker registry: https://hub.docker.com/r/bfreire/liferay/
 
-## Launch it using "docker run":
+## How to use this image
+### Launch it using "docker run":
 
 ```
 # Run mysql:
@@ -28,7 +29,7 @@ docker run --name lep-as -p 80:8080 -p 443:8443 --link lep-db -d bfreire/liferay
 #     -v /absolute/path/to/local/folder:/var/liferay/deploy
 ```
 
-## Launching using "docker-compose":
+### Launching using "docker-compose":
 
 ```
 git clone https://github.com/bfreire/docker-liferay-mysql
@@ -37,11 +38,11 @@ docker-compose up
 # For production mode use: docker-compose -f docker-compose-prod.yml up
 ```
 
-## Use:
+### Use:
 Point browser to docker machine ip (port 80 or port 443)
 
-## If you want to run an hypersonic db instead of mysql, don't need to run none of the steps above. Just run with the following tag:
+### If you want to run an hypersonic db instead of mysql, don't need to run none of the steps above. Just run with the following tag:
 
 ```
-docker run bfreire/liferay:hypersonic
+docker run -p 80:8080 -p 443:8443 -d bfreire/liferay:hypersonic
 ```
