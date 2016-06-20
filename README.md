@@ -5,10 +5,10 @@ Based on ctliv/liferay:6.2
 
 Image available in docker registry: https://hub.docker.com/r/bfreire/liferay/
 
-## Running:
+## Pulling:
 
 ```
-docker run bfreire/liferay:hypersonic
+docker pull bfreire/liferay:hypersonic
 ```
 
 ## Launching using "docker run":
