@@ -2,21 +2,22 @@
 #
 # VERSION 1.0
 # Based on ctliv/liferay:6.2
+# Based on bfreire/docker-liferay-mysql
 #
 
 # 1.0 : initial file with liferay-ce-portal-7.0-ga2
 
 FROM ubuntu
 
-MAINTAINER Bruno Freire <bmofreire@gmail.com>
+MAINTAINER Marco Fargetta <marco.fargetta@ct.infn.it>
 
 # Users and groups
-# RUN groupadd -r tomcat && useradd -r -g tomcat tomcat
+#RUN groupadd -r tomcat && useradd -r -g tomcat tomcat
 RUN echo "root:Docker!" | chpasswd
 
 # Install packages
 RUN apt-get update && \
-	apt-get install -y curl unzip ssh vim net-tools git && \
+	apt-get install -y curl unzip ssh openssh-server vim net-tools git && \
 	apt-get clean
 
 # Export TERM as "xterm"
@@ -52,7 +53,7 @@ RUN ln -fs ${LIFERAY_HOME} /var/liferay && \
 	ln -fs ${TOMCAT_HOME} /var/tomcat
 
 # Add configuration files to liferay home
-ADD conf/* ${LIFERAY_HOME}/
+#ADD conf/* ${LIFERAY_HOME}/
 
 # Add default plugins to auto-deploy directory
 #ADD deploy/* ${LIFERAY_HOME}/deploy/
@@ -65,6 +66,9 @@ VOLUME ${LIFERAY_HOME}
 
 # Ports
 EXPOSE 8080 8443
+
+# Start the ssh service
+RUN service ssh start
 
 # EXEC
 CMD ["/opt/script/start.sh"]
