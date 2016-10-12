@@ -1,15 +1,14 @@
-# Liferay CE Portal 7.0 GA2
+# Liferay CE Portal 6.2 GA4
 #
 # VERSION 1.0
+# Based on fmarco76/docker-liferay
 # Based on ctliv/liferay:6.2
 # Based on bfreire/docker-liferay-mysql
 #
 
-# 1.0 : initial file with liferay-ce-portal-7.0-ga2
+FROM alpine
 
-FROM ubuntu
-
-MAINTAINER Marco Fargetta <marco.fargetta@ct.infn.it>
+MAINTAINER Michael Angelo B. Sevilla <msevilla@ms3-inc.com>
 
 # Users and groups
 #RUN groupadd -r tomcat && useradd -r -g tomcat tomcat
@@ -35,9 +34,9 @@ ENV PATH=$PATH:$JAVA_HOME/bin
 
 # Install liferay (removing sample application "welcome-theme")
 ENV LIFERAY_BASE=/opt
-ENV LIFERAY_VER=liferay-ce-portal-7.0-ga2
+ENV LIFERAY_VER=liferay-ce-portal-6.2-ga4
 ENV LIFERAY_HOME=${LIFERAY_BASE}/${LIFERAY_VER}
-ENV TOMCAT_VER=tomcat-8.0.32
+ENV TOMCAT_VER=tomcat-7.0.42
 ENV TOMCAT_HOME=${LIFERAY_HOME}/${TOMCAT_VER}
 RUN cd /tmp && \
 	curl -o ${LIFERAY_VER}.zip -k -L -C - \
