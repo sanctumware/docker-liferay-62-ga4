@@ -6,7 +6,7 @@
 # Based on bfreire/docker-liferay-mysql
 #
 
-FROM alpine
+FROM ubuntu
 
 MAINTAINER Michael Angelo B. Sevilla <msevilla@ms3-inc.com>
 
