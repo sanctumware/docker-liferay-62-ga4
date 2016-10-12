@@ -41,7 +41,8 @@ ENV TOMCAT_VER=tomcat-8.0.32
 ENV TOMCAT_HOME=${LIFERAY_HOME}/${TOMCAT_VER}
 RUN cd /tmp && \
 	curl -o ${LIFERAY_VER}.zip -k -L -C - \
-	"http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/7.0.1%20GA2/liferay-ce-portal-tomcat-7.0-ga2-20160610113014153.zip" && \
+	# "http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/7.0.1%20GA2/liferay-ce-portal-tomcat-7.0-ga2-20160610113014153.zip" && \
+	"https://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.2.3%20GA4/liferay-portal-tomcat-6.2-ce-ga4-20150416163831865.zip" && \
 	unzip ${LIFERAY_VER}.zip -d /opt && \
 	rm ${LIFERAY_VER}.zip && \
 	rm -fr ${TOMCAT_HOME}/webapps/welcome-theme && \
@@ -65,7 +66,7 @@ RUN chmod +x ${LIFERAY_BASE}/script/*.sh
 VOLUME ${LIFERAY_HOME}
 
 # Ports
-EXPOSE 8080 8443
+EXPOSE 8081 8443
 
 # Start the ssh service
 RUN service ssh start
